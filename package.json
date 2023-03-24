@@ -1,11 +1,10 @@
 {
   "name": "readlists",
   "version": "0.3.0",
-  "description": "",
   "type": "module",
-  "main": "",
+  "main": "index.js",
   "scripts": {
-    "build": "rm -rf build && cp -R src build && npm run build:transpile && node scripts/build.js",
+    "build": "rm -rf build && cp -R src build ",
     "build:transpile": "babel build/js/components --out-dir build/js/components",
     "start": "netlify dev --dir src",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +16,10 @@
     "@babel/core": "^7.12.17",
     "babel-plugin-htm": "^3.0.0",
     "chai": "^4.3.0",
-    "netlify-cli": "^3.8.6"
+    "netlify-cli": "^13.2.1"
+  },
+  "description": "",
+  "dependencies": {
+    "babel": "^6.23.0"
   }
 }
