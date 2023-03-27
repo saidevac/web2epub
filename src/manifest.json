@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "web2epub Extensions",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "action": {
+    "default_icon": "./assets/icons8-smiley-64.png",
+    "default_title": "Click to Send Epub"
+  },
+  "permissions": [
+    "scripting",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "./extension/background.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [{
+    "resources": ["/epub/*"],
+    "matches": ["<all_urls>"]
+  }
+]
+}

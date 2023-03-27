@@ -2,7 +2,7 @@
 
 <head>
     <script type="module">    
-        import exportToEpub from './epub/index.js';
+        import exportToEpub from '../src/epub/exportToEpub.js';
    </script>
 </head>
 <body>
@@ -36,7 +36,7 @@
 const handleExportEpub = (e) => {
    // setIsLoadingEpub(true);
 
-    import("./epub/index.js")
+    import("../src/epub/exportToEpub.js")
       .then((module) => {
         const exportToEpub = module.default;
         return exportToEpub(readlist);

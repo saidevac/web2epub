@@ -34,18 +34,23 @@
   - Notes on zip+epub file https://gist.github.com/cyrilis/8d48eef37fbc108869ac32eb3ef97bca
     
 */
-import getContent from "./templates/content.js";
-import getChapter from "./templates/chapter.js";
-import getContainer from "./templates/container.js";
-import getToc from "./templates/toc.js";
-import { getImgExt, getUid, importUMD, slugify, CORS_PROXY } from "../utils.js";
+import getContent from "./scripts/templates/content.js";
+import getChapter from "./scripts/templates/chapter.js";
+import getContainer from "./scripts/templates/container.js";
+import getToc from "./scripts/templates/toc.js";
+import "./scripts/jszip.min.js";
+import {saveAs} from  "./scripts/FileSaver.js";
+
+import { getImgExt, getUid, importUMD, slugify, CORS_PROXY } from "./scripts/utils.js";
 
 export default async function exportToEpub(readlist) {
-  // Import our UMD deps (since there's no official ESM build)
-  await Promise.all([
-    importUMD("https://unpkg.com/jszip@3.5.0/dist/jszip.min.js"), // window.JSZip
-    importUMD("https://unpkg.com/file-saver@2.0.2/dist/FileSaver.min.js"), // window.saveAs
-  ]);
+ // Import our UMD deps (since there's no official ESM build)
+  // await Promise.all([
+  //   importUMD("./scripts/jszip.min.js"), // window.JSZip
+  //   importUMD("./scripts/FileSaver.min.js"), // window.saveAs
+  // ]);
+
+
 
   /**
    * @typedef Epub
@@ -153,7 +158,7 @@ export default async function exportToEpub(readlist) {
   });
 
   // Include the placeholder image for missing images
-  const placeholderImg = await fetch("./assets/img-placeholder.jpg").then(
+  const placeholderImg = await fetch("../assets/img-placeholder.jpg").then(
     (res) => res.blob()
   );
   zip.file("OEBPS/images/img-placeholder.jpg", placeholderImg);
@@ -165,3 +170,6 @@ export default async function exportToEpub(readlist) {
       saveAs(content, `${slugify(epub.title)}.epub`);
     });
 }
+
+
+export { exportToEpub }

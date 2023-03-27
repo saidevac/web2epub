@@ -1,0 +1,49 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+ 
+<head>
+    <title>Getting Started Extension's Popup</title>
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+
+    <script src="popup.js"></script>
+
+    <link href="w2e.css" rel="stylesheet">
+</head>
+
+<body style="height: 113px;">
+    <div id="h2e-popup-send" class="h2e-popup-item h2e-popup-item-large h2e-popup-item-first">
+        <div id="h2e-popup-send-icon" class="h2e-popup-icon"></div>
+        <div id="h2e-popup-send-text" class="h2e-popup-text" h2e-string="popUpSendToKindle">Send to Kindle</div>
+        <div id="h2e-popup-send-shortcut" class="h2e-popup-shortcut" h2e-shortcut="h2e-send-shortcut">ALT + K</div>
+    </div>
+    <div id="h2e-popup-preview" class="h2e-popup-item h2e-popup-item-large">
+        <div id="h2e-popup-preview-icon" class="h2e-popup-icon"></div>
+        <div id="h2e-popup-preview-text" class="h2e-popup-text" h2e-string="popUpPreviewAndSend">Preview &amp; Send
+        </div>
+        <div id="h2e-popup-preview-shortcut" class="h2e-popup-shortcut" h2e-shortcut="h2e-preview-shortcut">ALT + P
+        </div>
+    </div>
+    <div id="h2e-popup-settings" class="h2e-popup-item h2e-popup-item h2e-popup-item-large">
+        <div id="h2e-popup-preview-icon" class="h2e-popup-icon"></div>
+        <div id="h2e-popup-options-text" class="h2e-popup-text" h2e-string="popUpOptions">Settings</div>
+        <div id="h2e-popup-settings-shortcut" class="h2e-popup-shortcut" h2e-shortcut="h2e-settings-shortcut">ALT + S
+        </div>
+
+    </div>
+    <div id="message" class="h2e-popup-text h2e-popup-item" h2e-string="">
+        <a>#message</a>
+    </div>
+</body>
+
+
+</html>

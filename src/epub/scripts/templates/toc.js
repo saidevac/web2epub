@@ -1,4 +1,4 @@
-import { escapeXml } from "../../utils.js";
+import { escapeXml } from "../utils.js";
 
 export default function toc(epub) {
   const { chapters } = epub;

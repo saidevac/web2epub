@@ -6,7 +6,6 @@
   "scripts": {
     "build": "rm -rf build && cp -R src build ",
     "build:transpile": "babel build/js/components --out-dir build/js/components",
-    "start": "netlify dev --dir src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -20,6 +19,7 @@
   },
   "description": "",
   "dependencies": {
-    "babel": "^6.23.0"
+    "babel": "^6.23.0",
+    "file-saver-es": "^2.0.5"
   }
 }
