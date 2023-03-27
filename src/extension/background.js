@@ -6,15 +6,17 @@ function injectedFunction() {
 
     var bodyText = document.querySelector('body').innerHTML;
     if (!bodyText) return "ERROR: querySelector failed to find node"
-
+    console.log('bodyText'+bodyText);
 
     //prepare input to epub    
     var readlist = {
         "title": titleText,
         "description": "sample description",
-        "articles": [{
-            "content": bodyText
-        }
+        "articles": [
+            {
+                "title": titleText,
+                "content": bodyText
+            }
         ]
     }
 
