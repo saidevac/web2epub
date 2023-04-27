@@ -39,12 +39,12 @@ import getChapter from "./scripts/templates/chapter.js";
 import getContainer from "./scripts/templates/container.js";
 import getToc from "./scripts/templates/toc.js";
 import "./scripts/jszip.min.js";
-import {saveAs} from  "./scripts/FileSaver.js";
+import { saveAs } from "./scripts/FileSaver.js";
 
 import { getImgExt, getUid, importUMD, slugify, CORS_PROXY } from "./scripts/utils.js";
 
 export default async function exportToEpub(readlist) {
- // Import our UMD deps (since there's no official ESM build)
+  // Import our UMD deps (since there's no official ESM build)
   // await Promise.all([
   //   importUMD("./scripts/jszip.min.js"), // window.JSZip
   //   importUMD("./scripts/FileSaver.min.js"), // window.saveAs
@@ -88,7 +88,10 @@ export default async function exportToEpub(readlist) {
             // us from generating the book. Just use the image not found
             // that we have locally.
             try {
-              let res = await fetch(CORS_PROXY + src);
+              //SAIDEV:REMOVE
+              //let res = await fetch(CORS_PROXY + src);
+              let res = await fetch(src);
+
               const imgBlob = await res.blob();
 
               console.log("Fetched", src);
@@ -118,6 +121,21 @@ export default async function exportToEpub(readlist) {
           $node.remove();
         });
 
+        //Remove all nav, iframes, advertisement,button and forms
+        Array.from(
+          $html.querySelectorAll("nav,left-navigation,right-navigation,iframe,script,div.adWrapper,header,footer,noscript,aside,form,button")
+          ).forEach(($node) => {
+          $node.remove();
+        });
+
+        //Remove all video related tags
+        Array.from(
+          $html.querySelectorAll("div[data-testid='video-player'],video,legend,div[role='dialog'],a[href='javascript:void(0);']")
+          ).forEach(($node) => {
+          $node.remove();
+        });
+
+
         return {
           // id for the file name, i.e. 001
           id: String(index).padStart(3, "0"),
@@ -135,7 +153,7 @@ export default async function exportToEpub(readlist) {
     ),
   };
 
-  // Log some info about the images that got fetched fro the network
+  // Log some info about the images that got fetched from the network
   console.log(
     "Fetched %s images total.",
     epub.chapters
@@ -148,6 +166,7 @@ export default async function exportToEpub(readlist) {
   zip.file("mimetype", "application/epub+zip");
   zip.file("META-INF/container.xml", getContainer());
   zip.file("OEBPS/content.opf", getContent(epub));
+  //REMOVE:
   zip.file("OEBPS/toc.xhtml", getToc(epub));
   epub.chapters.forEach((chapter) => {
     zip.file(`OEBPS/${chapter.id}.xhtml`, getChapter(chapter));

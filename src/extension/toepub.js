@@ -1,4 +1,4 @@
-import {exportToEpub}  from "../epub/exportToEpub.js")
+import {exportToEpub}  from "../epub/exportToEpub.js"
     
 
     // get title and body content from current web page

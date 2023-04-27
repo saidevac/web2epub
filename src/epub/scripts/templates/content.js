@@ -29,7 +29,7 @@ export default function content(epub) {
     <dc:creator id="creator">${author}</dc:creator>
     <dc:publisher>${publisher}</dc:publisher>
     
-    <meta name="generator" content="readlists.jim-nielsen.com" />    
+    <meta name="generator" content="readlists.generator.web2epub" />    
     <meta property="dcterms:modified">${modified}</meta>
   </metadata>
 
@@ -55,14 +55,15 @@ export default function content(epub) {
         .join("\n")}
     </manifest>
     <spine>
-      <itemref idref="toc"/>
+    <!-- COMMENTED to not have Table of Contents -->
+     <!-- itemref idref="toc"/ -->
       ${chapters
         .map((chapter) => `<itemref idref="chapter-${chapter.id}" />`)
         .join("\n")}
     </spine>
-    <guide>
-      <reference title="Table of content" type="toc" href="toc.xhtml"/>
-    </guide>
+    <!-- guide>
+       <reference title="Table of content" type="toc" href="toc.xhtml"/>
+    </guide -->
 </package>
   `;
 }

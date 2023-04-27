@@ -4,8 +4,8 @@
   "description": "Base Level Extension",
   "version": "1.0",
   "action": {
-    "default_icon": "./assets/icons8-smiley-64.png",
-    "default_title": "Click to Send Epub"
+    "default_icon": "./assets/icons_ebook2_320_320.png",
+    "default_title": "Click to download epub"
   },
   "permissions": [
     "scripting",
